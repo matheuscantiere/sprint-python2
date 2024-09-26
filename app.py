@@ -311,37 +311,37 @@ def whatsapp_reply():
     if 'opcoes' in incoming_msg:
         msg.body('Escolha uma das opções abaixo:\n\n 1. Pilotos\n 2. Equipes\n 3. Termos\n 4. Regulamentos\n 5. Curiosidades\n 6. Detalhes\n 7. Ranking')
 
-    elif 'pilotos' or '1' in incoming_msg:
+    elif '1' in incoming_msg or 'pilotos' in incoming_msg:
         response_text = "*🚦 Pilotos:*\n\n"
         for piloto in detalhes:
             response_text += f"_Nome:_ {piloto['name']}, Equipe: {piloto['team']}\n\n"
         msg.body(response_text)
 
-    elif 'equipes' or '2' in incoming_msg:
+    elif '2' in incoming_msg or 'equipes' in incoming_msg:
         response_text = "👥 Equipes e Carros: 🏎\n\n"
         for i, y in equipes.items():
             response_text += f"Equipe: {i}, Pilotos: {', '.join(y['Pilotos'])}, Carro: {y['Carro']}\n\n"
         msg.body(response_text)
 
-    elif 'termos' or '3' in incoming_msg:
+    elif '3' in incoming_msg or 'termos' in incoming_msg:
         response_text = "📋 Termos Técnicos: 📈\n\n"
         for i, y in termos.items():
             response_text += f"{i}: {y}\n"
         msg.body(response_text)
 
-    elif 'regulamento' or '4' in incoming_msg:
+    elif '4' in incoming_msg or 'regulamento' in incoming_msg:
         response_text = "📖 _Regulamento:_ 📝\n\n"
         for i, y in regulamento.items():
             response_text += f"*{i}*: {y}\n\n"
         msg.body(response_text)
 
-    elif 'curiosidades' or '5'  in incoming_msg:
+    elif '5' in incoming_msg or 'curiosidades'  in incoming_msg:
         response_text = "*🧠 Curiosidades: 👀*\n\n"
         for i, y in curiosidades.items():
             response_text += f"_{i}_:   {y}\n"
         msg.body(response_text)
 
-    elif 'detalhes' or '6' in incoming_msg:
+    elif '6' in incoming_msg or 'detalhes' in incoming_msg:
         # Capturar o nome do piloto digitado pelo usuário (removendo a palavra 'detalhes')
         piloto_nome = incoming_msg.replace('detalhes', '').strip()
 
@@ -364,7 +364,7 @@ def whatsapp_reply():
 
         msg.body(response_text)
 
-    elif 'ranking' or '7' in incoming_msg:
+    elif '7' in incoming_msg or 'ranking' in incoming_msg:
         response_text = "Ranking de Pilotos: \n\n"
         for piloto in detalhes:
             response_text += f" _Posição_: _{piloto['position']}_\n Nome: {piloto['name']}, Pontos: {piloto['points']}\n\n"
