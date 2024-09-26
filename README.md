@@ -74,7 +74,7 @@ Este projeto é um chatbot interativo para o WhatsApp sobre a Fórmula E, desenv
 
 
 ## Diagrama de Blocos
-
+![Diagrama](DiagramaBlocos.png)
 
 ## Autores
 
