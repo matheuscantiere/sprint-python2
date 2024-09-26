@@ -3,14 +3,14 @@ from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 
 # Substitua essas credenciais pelas suas, que estão no painel do Twilio
-account_sid = 'ACaf1b4a1a0b7a6b3b3b581d023b3ff500'
-auth_token = 'aebf1c234b2dea1c983bc4a05222a3e1'
+account_sid = 'AC1061fe4abb3e8ada0db9d556637f82fa'
+auth_token = '2a35cdd193579695dab2c168e3f95692'
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
     body="🌟 *Bem-vindo ao Chat Turbo!* ⚡\n\n O *Chat Turbo* traz tudo sobre *Fórmula E*! 🏎️💨 Aqui você encontra informações sobre *pilotos* 🏁, *ranking* da temporada 🏆, *equipes* 🔧, além de detalhes sobre *regulamento* 📜 e *termos técnicos* ⚙️. Explore o futuro do automobilismo elétrico! 🔋\n\n Pronto para acelerar? 🏎️⚡ #ChatTurbo #FormulaE",
     from_='whatsapp:+14155238886',
-    to='whatsapp:+5517991341680'
+    to='whatsapp:+5511992391470'
 )
 
 print(f"Mensagem enviada: {message.sid}")
@@ -308,37 +308,40 @@ def whatsapp_reply():
     resp = MessagingResponse()
     msg = resp.message()
 
-    if 'pilotos' in incoming_msg:
+    if 'opcoes' in incoming_msg:
+        msg.body('Escolha uma das opções abaixo:\n\n 1. Pilotos\n 2. Equipes\n 3. Termos\n 4. Regulamentos\n 5. Curiosidades\n 6. Detalhes\n 7. Ranking')
+
+    elif 'pilotos' or '1' in incoming_msg:
         response_text = "*🚦 Pilotos:*\n\n"
         for piloto in detalhes:
             response_text += f"_Nome:_ {piloto['name']}, Equipe: {piloto['team']}\n\n"
         msg.body(response_text)
 
-    elif 'equipes' in incoming_msg:
+    elif 'equipes' or '2' in incoming_msg:
         response_text = "👥 Equipes e Carros: 🏎\n\n"
         for i, y in equipes.items():
             response_text += f"Equipe: {i}, Pilotos: {', '.join(y['Pilotos'])}, Carro: {y['Carro']}\n\n"
         msg.body(response_text)
 
-    elif 'termos' in incoming_msg:
+    elif 'termos' or '3' in incoming_msg:
         response_text = "📋 Termos Técnicos: 📈\n\n"
         for i, y in termos.items():
             response_text += f"{i}: {y}\n"
         msg.body(response_text)
 
-    elif 'regulamento' in incoming_msg:
+    elif 'regulamento' or '4' in incoming_msg:
         response_text = "📖 _Regulamento:_ 📝\n\n"
         for i, y in regulamento.items():
             response_text += f"*{i}*: {y}\n\n"
         msg.body(response_text)
 
-    elif 'curiosidades' in incoming_msg:
+    elif 'curiosidades' or '5'  in incoming_msg:
         response_text = "*🧠 Curiosidades: 👀*\n\n"
         for i, y in curiosidades.items():
             response_text += f"_{i}_:   {y}\n"
         msg.body(response_text)
 
-    elif 'detalhes' in incoming_msg:
+    elif 'detalhes' or '6' in incoming_msg:
         # Capturar o nome do piloto digitado pelo usuário (removendo a palavra 'detalhes')
         piloto_nome = incoming_msg.replace('detalhes', '').strip()
 
@@ -361,7 +364,7 @@ def whatsapp_reply():
 
         msg.body(response_text)
 
-    elif 'ranking' in incoming_msg:
+    elif 'ranking' or '7' in incoming_msg:
         response_text = "Ranking de Pilotos: \n\n"
         for piloto in detalhes:
             response_text += f" _Posição_: _{piloto['position']}_\n Nome: {piloto['name']}, Pontos: {piloto['points']}\n\n"
