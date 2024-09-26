@@ -35,7 +35,7 @@ Este projeto é um chatbot interativo para o WhatsApp sobre a Fórmula E, desenv
 ## Instalação e Execução
 
 ### 1. Clonar o Repositório
-    git clone https://github.com/seu-usuario/seu-repositorio.git
+    git clone https://github.com/matheuscantiere/sprint-python2.git
 
     cd seu-repositorio
 
