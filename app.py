@@ -3,14 +3,14 @@ from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 
 # Substitua essas credenciais pelas suas, que estão no painel do Twilio
-account_sid = 'AC1061fe4abb3e8ada0db9d556637f82fa'
-auth_token = '2a35cdd193579695dab2c168e3f95692'
+account_sid = 'ACaf1b4a1a0b7a6b3b3b581d023b3ff500'
+auth_token = 'aebf1c234b2dea1c983bc4a05222a3e1'
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
     body="🌟 *Bem-vindo ao Chat Turbo!* ⚡\n\n O *Chat Turbo* traz tudo sobre *Fórmula E*! 🏎️💨 Aqui você encontra informações sobre *pilotos* 🏁, *ranking* da temporada 🏆, *equipes* 🔧, além de detalhes sobre *regulamento* 📜 e *termos técnicos* ⚙️. Explore o futuro do automobilismo elétrico! 🔋\n\n Pronto para acelerar? 🏎️⚡ #ChatTurbo #FormulaE",
     from_='whatsapp:+14155238886',
-    to='whatsapp:+5511992391470'
+    to='whatsapp:+5517991341680'
 )
 
 print(f"Mensagem enviada: {message.sid}")
@@ -146,15 +146,6 @@ detalhes = [
       "best_track": "Cidade do México"
     },
     {
-      "name": "Lucas di Grassi",
-      "team": "ABT CUPRA",
-      "position": 14,
-      "points": 62,
-      "races_won": 1,
-      "best_lap_time": "1:30.890",
-      "best_track": "Cidade do México"
-    },
-    {
       "name": "Nyck de Vries",
       "team": "Mahindra Racing",
       "position": 15,
@@ -254,15 +245,6 @@ detalhes = [
       "best_track": "Diriyah"
     },
     {
-      "name": "Oliver Rowland",
-      "team": "Nissan Formula E",
-      "position": 25,
-      "points": 20,
-      "races_won": 0,
-      "best_lap_time": "1:33.234",
-      "best_track": "Diriyah"
-    },
-    {
       "name": "Tom Blomqvist",
       "team": "Jaguar TCS Racing",
       "position": 26,
@@ -329,13 +311,13 @@ def whatsapp_reply():
     if 'pilotos' in incoming_msg:
         response_text = "*🚦 Pilotos:*\n\n"
         for piloto in detalhes:
-            response_text += f"_Nome:_ {piloto['name']}, Equipe: {piloto['team']}\n"
+            response_text += f"_Nome:_ {piloto['name']}, Equipe: {piloto['team']}\n\n"
         msg.body(response_text)
 
     elif 'equipes' in incoming_msg:
         response_text = "👥 Equipes e Carros: 🏎\n\n"
         for i, y in equipes.items():
-            response_text += f"Equipe: {i}, Pilotos: {', '.join(y['Pilotos'])}, Carro: {y['Carro']}\n"
+            response_text += f"Equipe: {i}, Pilotos: {', '.join(y['Pilotos'])}, Carro: {y['Carro']}\n\n"
         msg.body(response_text)
 
     elif 'termos' in incoming_msg:
@@ -345,9 +327,9 @@ def whatsapp_reply():
         msg.body(response_text)
 
     elif 'regulamento' in incoming_msg:
-        response_text = "📖 Regulamento: 📝\n\n"
+        response_text = "📖 _Regulamento:_ 📝\n\n"
         for i, y in regulamento.items():
-            response_text += f"{i}: {y}\n"
+            response_text += f"*{i}*: {y}\n\n"
         msg.body(response_text)
 
     elif 'curiosidades' in incoming_msg:
@@ -380,10 +362,9 @@ def whatsapp_reply():
         msg.body(response_text)
 
     elif 'ranking' in incoming_msg:
-        response_text = "🎖 Ranking de Pilotos: 🎖\n\n"
+        response_text = "Ranking de Pilotos: \n\n"
         for piloto in detalhes:
-            response_text += (f"Posição: {piloto['position']}, Nome: {piloto['name']}, "
-                            f"Equipe: {piloto['team']}, Pontos: {piloto['points']}\n")
+            response_text += f" _Posição_: _{piloto['position']}_\n Nome: {piloto['name']}, Pontos: {piloto['points']}\n\n"
         msg.body(response_text)
     
     else:
