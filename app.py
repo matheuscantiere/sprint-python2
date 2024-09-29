@@ -3,14 +3,14 @@ from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 
 # Substitua essas credenciais pelas suas, que estão no painel do Twilio
-account_sid = 'AC1061fe4abb3e8ada0db9d556637f82fa'
-auth_token = '2a35cdd193579695dab2c168e3f95692'
+account_sid = 'AC6540de0e0758d87324ce61ac03fbd785'
+auth_token = 'ae8691f28ea0a72859bcf17e22e34a0e'
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
     body="🌟 *Bem-vindo ao Chat Turbo!* ⚡\n\n O *Chat Turbo* traz tudo sobre *Fórmula E*! 🏎️💨 Aqui você encontra informações sobre *pilotos* 🏁, *ranking* da temporada 🏆, *equipes* 🔧, além de detalhes sobre *regulamento* 📜 e *termos técnicos* ⚙️. Explore o futuro do automobilismo elétrico! 🔋\n\n Pronto para acelerar? 🏎️⚡ #ChatTurbo #FormulaE",
     from_='whatsapp:+14155238886',
-    to='whatsapp:+5511992391470'
+    to='whatsapp:+5517991341680'
 )
 
 print(f"Mensagem enviada: {message.sid}")
