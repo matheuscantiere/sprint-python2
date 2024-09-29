@@ -383,12 +383,12 @@ def whatsapp_reply():
 
         # Se o piloto foi encontrado, exibir os detalhes
         if piloto_encontrado:
-            response_text = (f"👤*Nome: {piloto_encontrado['name']} {piloto_encontrado['country']}* " 
-                             f"Equipe: {piloto_encontrado['team']}, "
-                             f"Posição: {piloto_encontrado['position']}, Pontos: {piloto_encontrado['points']}, "
-                             f"Corridas ganhas: {piloto_encontrado['races_won']}, "
-                             f"Melhor volta: {piloto_encontrado['best_lap_time']}, "
-                             f"Melhor pista: {piloto_encontrado['best_track']}\n\n")
+            response_text = (f"👤*Nome: {piloto_encontrado['name']} {piloto_encontrado['country']}*\n" 
+                             f"Equipe: {piloto_encontrado['team']},\n\n"
+                             f"Posição: {piloto_encontrado['position']}, Pontos: {piloto_encontrado['points']},\n"
+                             f"Corridas ganhas: {piloto_encontrado['races_won']}, \n"
+                             f"Melhor volta: {piloto_encontrado['best_lap_time']}, \n"
+                             f"Melhor pista: {piloto_encontrado['best_track']}.")
         else:
             response_text = "Piloto não encontrado. Por favor digite: detalhes {nome do piloto}."
 
