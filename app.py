@@ -383,7 +383,7 @@ def whatsapp_reply():
 
         # Se o piloto foi encontrado, exibir os detalhes
         if piloto_encontrado:
-            response_text = (f"👤*Nome: {piloto_encontrado['name']} {piloto['country']}* " 
+            response_text = (f"👤*Nome: {piloto_encontrado['name']} {piloto_encontrado['country']}* " 
                              f"Equipe: {piloto_encontrado['team']}, "
                              f"Posição: {piloto_encontrado['position']}, Pontos: {piloto_encontrado['points']}, "
                              f"Corridas ganhas: {piloto_encontrado['races_won']}, "
